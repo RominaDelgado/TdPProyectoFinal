@@ -18,6 +18,10 @@
             android:id="@+id/textView_listaMovieNote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lista MovieNote" />
+            android:text="                             LISTA MovieNote" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
