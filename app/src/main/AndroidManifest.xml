@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.example.MovieNote.MainActivity"
+            android:name=".MainActivity"
             android:label="MovieNote"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
