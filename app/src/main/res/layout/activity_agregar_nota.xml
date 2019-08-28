@@ -20,13 +20,51 @@
         <EditText
             android:id="@+id/editText_tituloPelicula"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="87dp"
             android:ems="10"
             android:inputType="textPersonName" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView_Fecha"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Fecha" />
+
+        <EditText
+            android:id="@+id/editText_fecha"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:ems="10"
+            android:inputType="date"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/textView_argumento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Argumento" />
+
+        <EditText
+            android:id="@+id/editText_argumento"
+            android:layout_width="match_parent"
+            android:layout_height="277dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:inputType="textMultiLine" />
+
+        <TextView
+            android:id="@+id/textView_medioTransmision"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Medio de transmisión" />
+
+        <EditText
+            android:id="@+id/editText_medioTransmision"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            tools:visibility="visible" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
