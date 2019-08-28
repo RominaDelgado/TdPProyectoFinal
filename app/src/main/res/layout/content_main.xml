@@ -18,7 +18,7 @@
             android:id="@+id/textView_listaMovieNote"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="                             LISTA MovieNote" />
+            android:text="Lista de notas" />
 
         <ListView
             android:id="@+id/listView_listaMovieNote"

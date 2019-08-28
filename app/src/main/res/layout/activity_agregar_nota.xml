@@ -47,7 +47,7 @@
         <EditText
             android:id="@+id/editText_argumento"
             android:layout_width="match_parent"
-            android:layout_height="277dp"
+            android:layout_height="218dp"
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine" />
@@ -65,6 +65,12 @@
             android:ems="10"
             android:inputType="textPersonName"
             tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/button_guardar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guardar" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
