@@ -9,7 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".agregar_nota"></activity>
+        <activity android:name=".Informacion"></activity>
+        <activity
+            android:name="com.example.myapplication.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.MovieNote.MainActivity" />
+        </activity>
+        <activity android:name=".agregar_nota" />
         <activity
             android:name=".MainActivity"
             android:label="MovieNote"
