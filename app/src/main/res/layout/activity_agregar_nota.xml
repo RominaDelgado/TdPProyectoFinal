@@ -31,8 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:translationX="300dp"
-            android:translationY="300dp"
+            android:translationX="290dp"
+            android:translationY="400dp"
             app:srcCompat="@android:drawable/checkbox_on_background" />
 
     </LinearLayout>

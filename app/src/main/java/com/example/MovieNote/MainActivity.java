@@ -3,6 +3,7 @@ package com.example.MovieNote;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.MovieNote.Entidades.ConexionSQLiteHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -31,14 +32,15 @@ Logica logica=Logica.getInstancia();
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
-
+        //
+        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "db anotaciones",null, 1);
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view,"", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
                 // Vinculo el botón con la actividad agregar_nota
