@@ -30,7 +30,7 @@ public class agregar_nota extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                    AnotacionSimple anotacion = new AnotacionSimple(getText(R.id.editText_tituloPelicula).toString(), getText(R.id.editText_fecha).toString());
+                    AnotacionSimple anotacion = new AnotacionSimple(getText(R.id.editText_tituloPelicula).toString());
                     logica.guardar(anotacion);
 
 

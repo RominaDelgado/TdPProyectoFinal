@@ -15,29 +15,16 @@
             android:id="@+id/textView_tituloPelicula"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Titulo de Pelicula " />
+            android:text="Titulo de Pelicula "
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <EditText
             android:id="@+id/editText_tituloPelicula"
             android:layout_width="match_parent"
-            android:layout_height="87dp"
+            android:layout_height="63dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:textAllCaps="true" />
-
-        <TextView
-            android:id="@+id/textView_Fecha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Fecha" />
-
-        <EditText
-            android:id="@+id/editText_fecha"
-            android:layout_width="match_parent"
-            android:layout_height="62dp"
-            android:ems="10"
-            android:inputType="date"
-            tools:visibility="visible" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floatingActionButton_guardar"
