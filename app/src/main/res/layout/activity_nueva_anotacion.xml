@@ -42,10 +42,10 @@
             android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/button_registrar"
+            android:id="@+id/button_guardar"
             android:layout_width="195dp"
             android:layout_height="wrap_content"
-            android:text="Registrar" />
+            android:text="Guardar" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
