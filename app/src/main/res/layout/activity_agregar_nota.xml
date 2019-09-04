@@ -22,7 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="87dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:textAllCaps="true" />
 
         <TextView
             android:id="@+id/textView_Fecha"
@@ -38,11 +39,14 @@
             android:inputType="date"
             tools:visibility="visible" />
 
-        <Button
-            android:id="@+id/button_guardar"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton_guardar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Guardar" />
+            android:clickable="true"
+            android:translationX="300dp"
+            android:translationY="300dp"
+            app:srcCompat="@android:drawable/checkbox_on_background" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,14 +13,19 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity {
+import java.io.*;
 
+
+
+public class MainActivity extends AppCompatActivity {
+Logica logica=Logica.getInstancia();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        logica.cargar();
 
         // Icono de action Bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -39,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 // Vinculo el botón con la actividad agregar_nota
                 Intent miIntentAgregarNota = new Intent(MainActivity.this,agregar_nota.class);
                 startActivity(miIntentAgregarNota);
+                finish();
             }
         });
     }
@@ -68,4 +74,8 @@ public class MainActivity extends AppCompatActivity {
                 return false;
         }
     }
+
+
+
+
 }

@@ -7,12 +7,37 @@
     tools:context="com.example.MovieNote.Informacion">
 
     <LinearLayout
-        android:layout_width="416dp"
-        android:layout_height="741dp"
+        android:id="@+id/info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="-5dp"
-        tools:layout_editor_absoluteY="-10dp"/>
+        android:scrollbars="vertical">
 
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="283dp"
+            android:layout_height="wrap_content"
+            android:text="MovieNote"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#566361"
+            android:translationX="70dp"
+            android:translationY="100dp" />
 
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="285dp"
+            android:layout_height="wrap_content"
+            android:text="es una aplicación"
+            android:translationX="10dp"
+            android:translationY="105dp" />
 
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="277dp"
+            android:layout_height="wrap_content"
+            android:text="Desarrollada por:"
+            android:textColor="#070707"
+            android:translationX="10dp"
+            android:translationY="110dp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

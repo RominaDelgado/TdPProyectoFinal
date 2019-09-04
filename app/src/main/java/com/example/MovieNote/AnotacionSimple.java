@@ -2,14 +2,14 @@ package com.example.MovieNote;
 
 import java.io.Serializable;
 
-public class AnotacionSimple implements  Anotacion,Serializable {
+public class AnotacionSimple implements  Serializable {
 
 
 
     private String titulo;
     private String fecha;
 
-    public Anotacion(String titulo, String fecha){
+    public AnotacionSimple(String titulo, String fecha){
         this.titulo=titulo;
         this.fecha=fecha;
     }
@@ -31,4 +31,3 @@ public class AnotacionSimple implements  Anotacion,Serializable {
     }
 }
 
-}
