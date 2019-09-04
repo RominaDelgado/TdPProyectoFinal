@@ -41,14 +41,11 @@
             android:ems="10"
             android:inputType="textPersonName" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton_guardar"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/button_registrar"
+            android:layout_width="195dp"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:translationX="290dp"
-            android:translationY="400dp"
-            app:srcCompat="@android:drawable/checkbox_on_background" />
+            android:text="Registrar" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

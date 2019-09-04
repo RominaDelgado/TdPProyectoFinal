@@ -87,7 +87,7 @@
             android:text="Año:"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#832419"
-            android:translationX="100dp"
+            android:translationX="120dp"
             android:translationY="130dp" />
 
         <TextView
@@ -102,7 +102,7 @@
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Departamento de Ciencias e Ingeniria de Computación"
+            android:text="Departamento de Ciencias e Ingenieria de Computación"
             android:translationX="10dp"
             android:translationY="150dp" />
 
