@@ -14,9 +14,6 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.io.*;
-
-
 
 public class MainActivity extends AppCompatActivity {
 Logica logica=Logica.getInstancia();
@@ -43,8 +40,8 @@ Logica logica=Logica.getInstancia();
                 Snackbar.make(view,"", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
-                // Vinculo el botón con la actividad agregar_nota
-                Intent miIntentAgregarNota = new Intent(MainActivity.this,agregar_nota.class);
+                // Vinculo el botón con la actividad NuevaAnotacion
+                Intent miIntentAgregarNota = new Intent(MainActivity.this, NuevaAnotacion.class);
                 startActivity(miIntentAgregarNota);
                 finish();
             }

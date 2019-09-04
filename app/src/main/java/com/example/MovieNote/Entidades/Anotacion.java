@@ -5,6 +5,7 @@ import java.util.Date;
 public class Anotacion
 {
     private String titulo;
+    private String fecha;
     //private Date fecha;
 
     //public Anotacion(String titulo, Date fecha)
@@ -23,7 +24,17 @@ public class Anotacion
     {
         this.titulo = titulo;
     }
-/*
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+
+    /*
     public Date getFecha()
     {
         return fecha;
