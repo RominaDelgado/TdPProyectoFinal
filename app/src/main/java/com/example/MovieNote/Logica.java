@@ -1,16 +1,32 @@
 package com.example.MovieNote;
 
+import android.widget.Toast;
+
 import java.io.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import java.io.IOException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.nio.channels.FileChannel;
+
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+import android.content.Intent;
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public final class Logica {
     private  static final Logica instancia=new Logica();
-    private List<AnotacionSimple> lista;
+    private ArrayList<AnotacionSimple> lista;
 
     private Logica(){
-        lista= new LinkedList<AnotacionSimple>();
+        lista= new ArrayList<AnotacionSimple>();
 
     }
 
@@ -24,8 +40,10 @@ public final class Logica {
             lista.add(a);
             // Creo un objeto de tipo archivo para almacenar la lista:
             File fileName = new File("lista.data"); //FileNotFoundException
-            // Abrir un manejador de archivo para solo escritura:
+
+             // Abrir un manejador de archivo para solo escritura:
             ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(fileName));
+
             // Escribir la lista en el stream de objetos output (IOException):
             output.writeObject(lista);
             // Flush fuerza la escritura de cualquier contenido que haya quedado en el buffer del archivo.
@@ -34,10 +52,8 @@ public final class Logica {
             output.close();
 
         }
-        catch (FileNotFoundException e)
-           {e.printStackTrace();}
         catch (IOException e)
-           { e.printStackTrace(); }
+           { e.printStackTrace();}
 
     }
 
@@ -50,7 +66,7 @@ public final class Logica {
             ObjectInputStream input = new ObjectInputStream(new FileInputStream(fileName));
             // Leo la única lista que está en el archivo:
             // Puede producir IOException o ClassNotFoundException:
-            lista = (List<AnotacionSimple>) input.readObject();
+            lista = (ArrayList<AnotacionSimple>) input.readObject();
             input.close(); // Cierro el archivo
         }
 
@@ -60,7 +76,7 @@ public final class Logica {
         { e.printStackTrace();}
     }
 
-
-
+    public ArrayList<AnotacionSimple> getLista()
+    {return lista;}
 
 }

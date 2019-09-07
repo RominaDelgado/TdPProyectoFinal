@@ -3,7 +3,7 @@ package com.example.MovieNote;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.MovieNote.Entidades.ConexionSQLiteHelper;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -13,24 +13,46 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
+import android.widget.ArrayAdapter;
 
 
 public class MainActivity extends AppCompatActivity {
+
+
 Logica logica=Logica.getInstancia();
+    ArrayList<AnotacionSimple> l;
+    private ListView listaViewAnotaciones;
+    private ArrayAdapter<AnotacionSimple> adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        l=new ArrayList<AnotacionSimple>();
+
         logica.cargar();
+        l=logica.getLista();
+        adapter=new ArrayAdapter<AnotacionSimple>(this,android.R.layout.simple_list_item_1,l);
+
+
+        adapter.notifyDataSetChanged();
 
         // Icono de action Bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
-        //
-        ConexionSQLiteHelper conn = new ConexionSQLiteHelper(this, "db anotaciones",null, 1);
+
+        listaViewAnotaciones=(ListView) findViewById(R.id.listViewNotas);
+        listaViewAnotaciones.setAdapter(adapter);
+
+        //listaViewAnotaciones.setOnClickListener();
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
