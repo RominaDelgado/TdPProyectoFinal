@@ -39,7 +39,7 @@ public final class Logica {
         try {
             lista.add(a);
             // Creo un objeto de tipo archivo para almacenar la lista:
-            File fileName = new File("lista.data"); //FileNotFoundException
+            File fileName = new File("lista.txt"); //FileNotFoundException
 
              // Abrir un manejador de archivo para solo escritura:
             ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(fileName));
@@ -61,7 +61,7 @@ public final class Logica {
     {
         try
         {
-            File fileName = new File("lista.data"); // Nombre del archivo
+            File fileName = new File("lista.txt"); // Nombre del archivo
             // Abrir un file handle para solo lectura:
             ObjectInputStream input = new ObjectInputStream(new FileInputStream(fileName));
             // Leo la única lista que está en el archivo:

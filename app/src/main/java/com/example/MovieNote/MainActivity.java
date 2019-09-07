@@ -19,14 +19,12 @@ import java.util.ArrayList;
 import java.util.List;
 import android.widget.ArrayAdapter;
 
-
 public class MainActivity extends AppCompatActivity {
 
-
-Logica logica=Logica.getInstancia();
+    Logica logica=Logica.getInstancia();
     ArrayList<AnotacionSimple> l;
     private ListView listaViewAnotaciones;
-    private ArrayAdapter<AnotacionSimple> adapter;
+    private Adaptador<AnotacionSimple> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +37,7 @@ Logica logica=Logica.getInstancia();
 
         logica.cargar();
         l=logica.getLista();
-        adapter=new ArrayAdapter<AnotacionSimple>(this,android.R.layout.simple_list_item_1,l);
+        adapter=new Adaptador<AnotacionSimple>(this,android.R.layout.simple_list_item_1,l);
 
 
         adapter.notifyDataSetChanged();
