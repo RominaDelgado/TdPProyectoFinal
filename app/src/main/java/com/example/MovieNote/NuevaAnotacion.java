@@ -44,19 +44,35 @@ public class NuevaAnotacion extends AppCompatActivity
             //   pantalla principal donde esta la lista de anotaciones.
             @Override
             public void onClick(View view) {
-               if (   ((EditText) findViewById(R.id.campoTitulo)).getText().toString() ==""
+
+               // if (campoTitulo.getText().toString() =="")
+
+                //while( ((EditText) findViewById(R.id.campoTitulo)).getText().toString() ==" "
+                  //      &&
+                    //    ((EditText) findViewById(R.id.campoFecha)).getText().toString()==" ")
+                while (   campoTitulo.getText().toString() =="" && campoFecha.getText().toString()=="")
+                {
+                    //    {
+                    Toast.makeText(getApplicationContext(),"No completo los campos correspondientes.",Toast.LENGTH_SHORT).show();
+                }
+
+                /*
+               if (   (findViewById(R.id.campoTitulo)).getText().toString() ==""
                         &&
-                       ((EditText) findViewById(R.id.campoFecha)).getText().toString()=="")
+                       ( findViewById(R.id.campoFecha)).getText().toString()=="")
 
                      Toast.makeText(getApplicationContext(),"No completo los campos correspondientes.",Toast.LENGTH_SHORT).show();
                 else
                     {
+                 **/
                      registrarAnotacion();
+                     Toast.makeText(getApplicationContext(),"Se guardo correctamente.",Toast.LENGTH_SHORT).show();
+
                         // Vinculo el botón con la actividad NuevaAnotacion
                         Intent miIntentVolverPrincipal = new Intent(NuevaAnotacion.this, MainActivity.class);
                         startActivity(miIntentVolverPrincipal);
                         finish();
-                    }
+                    //}
             }
         });
 
