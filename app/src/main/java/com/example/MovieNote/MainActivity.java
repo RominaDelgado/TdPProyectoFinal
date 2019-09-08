@@ -24,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
     Logica logica=Logica.getInstancia();
     ArrayList<AnotacionSimple> l;
     private ListView listaViewAnotaciones;
-    private Adaptador<AnotacionSimple> adapter;
+    //private Adaptador<AnotacionSimple> adapter;
+private ArrayAdapter<AnotacionSimple> adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +37,11 @@ public class MainActivity extends AppCompatActivity {
 
         l=new ArrayList<AnotacionSimple>();
 
+        listaViewAnotaciones=(ListView) findViewById(R.id.listViewNotas);
+
         logica.cargar();
         l=logica.getLista();
-        adapter=new Adaptador<AnotacionSimple>(this,android.R.layout.simple_list_item_1,l);
+        adapter= new ArrayAdapter<AnotacionSimple>(this,android.R.layout.simple_list_item_1,l);
 
 
         adapter.notifyDataSetChanged();
@@ -47,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
 
-        listaViewAnotaciones=(ListView) findViewById(R.id.listViewNotas);
+
         listaViewAnotaciones.setAdapter(adapter);
 
         //listaViewAnotaciones.setOnClickListener();

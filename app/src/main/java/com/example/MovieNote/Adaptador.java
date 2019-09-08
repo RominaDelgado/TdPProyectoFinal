@@ -9,28 +9,32 @@ import android.widget.LinearLayout;
 import android.view.LayoutInflater;
 import android.widget.TextView;
 
+
+import android.graphics.Typeface;
+import android.util.TypedValue;
+
 import java.util.ArrayList;
 
 public class Adaptador<AnotacionSimple> extends ArrayAdapter<AnotacionSimple>
 {
     private ArrayList<AnotacionSimple> lista;
-    private AnotacionSimple anotacionSimple;
+    private AnotacionSimple anotacion;
 
     int resource;
     private Context context;
 
     public Adaptador(Context context, int resource, ArrayList<AnotacionSimple> objects) {
         super(context, resource, objects);
-        this.context=context;
-        this.resource=resource;
-        lista=objects;
+        this.context = context;
+        this.resource = resource;
+        lista = objects;
     }
 
     @Override
     public View getView(final int position,final View convertView, ViewGroup parent) {
 
         final LinearLayout listItem;
-        anotacionSimple =  getItem(position);
+        anotacion =  getItem(position);
 
         if (convertView == null)
         {
@@ -47,8 +51,12 @@ public class Adaptador<AnotacionSimple> extends ArrayAdapter<AnotacionSimple>
         }
 
 
-        final TextView tituloAnotacion = listItem.findViewById(R.id.list_item);
-        tituloAnotacion.setText(anotacionSimple.getTitulo());
+        //listItem = (LinearLayout) convertView;
+        //TextView tituloAnotacion =  listItem.findViewById(R.id.listViewNotas);
+        //tituloAnotacion.setTypeface(null, Typeface.BOLD);
+       // tituloAnotacion.setTextSize(TypedValue.COMPLEX_UNIT_PX, 18);
+
+        // tituloAnotacion.setText(anotacion.toString());
         return super.getView(position, convertView, parent);
     }
 }

@@ -51,7 +51,8 @@ public class NuevaAnotacion extends AppCompatActivity
                 }
                 else
                     {
-                        AnotacionSimple anotacion =new AnotacionSimple(campoTitulo.getText().toString());
+                        String titulo=""+campoTitulo.getText();
+                        AnotacionSimple anotacion =new AnotacionSimple(titulo);
                         logica.guardar(anotacion);
                         Toast.makeText(getApplicationContext(),"Se guardo correctamente.",Toast.LENGTH_SHORT).show();
 

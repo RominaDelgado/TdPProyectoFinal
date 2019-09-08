@@ -1,5 +1,6 @@
 package com.example.MovieNote;
 
+import android.os.Environment;
 import android.widget.Toast;
 
 import java.io.*;
@@ -25,6 +26,15 @@ public final class Logica {
     private  static final Logica instancia=new Logica();
     private ArrayList<AnotacionSimple> lista;
 
+
+    // Probando persistencia de datos
+    private String carpeta="/MovieNote.proyecto/";
+    private String archivo="lista";
+    private String file_path="";
+    private String name="";
+
+
+
     private Logica(){
         lista= new ArrayList<AnotacionSimple>();
 
@@ -39,7 +49,8 @@ public final class Logica {
         try {
             lista.add(a);
             // Creo un objeto de tipo archivo para almacenar la lista:
-            File fileName = new File("lista.txt"); //FileNotFoundException
+           File fileName = new File("lista.data"); //FileNotFoundException
+
 
              // Abrir un manejador de archivo para solo escritura:
             ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(fileName));
@@ -61,7 +72,23 @@ public final class Logica {
     {
         try
         {
-            File fileName = new File("lista.txt"); // Nombre del archivo
+            File fileName = new File("lista.data"); // Nombre del archivo
+
+            // Probando persistencia de datos
+            //this.file_path=(Environment.getExternalStorageDirectory()+this.carpeta);
+            //File localFile= new File(this.file_path);
+            //if (!localFile.exists())
+            //{
+             //   localFile.mkdirs();
+            //}
+            //this.name=(this.archivo+".data");
+            //File fileName = new File(localFile,this.name);
+            //fileName.createNewFile();
+
+
+
+
+
             // Abrir un file handle para solo lectura:
             ObjectInputStream input = new ObjectInputStream(new FileInputStream(fileName));
             // Leo la única lista que está en el archivo:

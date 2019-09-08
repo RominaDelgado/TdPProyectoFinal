@@ -7,7 +7,7 @@ public class AnotacionSimple implements  Serializable
 {
 
     private String titulo;
-    //private Date fecha;
+    private Date fecha;
 
     public AnotacionSimple(String titulo)
     {
@@ -19,9 +19,27 @@ public class AnotacionSimple implements  Serializable
         this.titulo=titulo;
     }
 
-     public String getTitulo()
-     {
+    public String getTitulo()
+    {
         return titulo;
-     }
+    }
+
+    public Date getFecha()
+    {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha)
+    {
+        this.fecha = fecha;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "-" + titulo;
+    }
+
+
 }
 
