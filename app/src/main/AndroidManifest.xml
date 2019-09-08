@@ -2,10 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.MovieNote">
 
-    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
+
+    <uses-permission
+        android:name="android.permission.WRITE_INTERNAL_STORAGE">
+    </uses-permission>
+    <uses-permission
+        android:name="android.permission.READ_INTERNAL_STORAGE" >
+    </uses-permission>
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+    </uses-permission>
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE" >
+    </uses-permission>
 
 
     <application
@@ -18,7 +29,7 @@
         <activity android:name=".Informacion"></activity>
         <activity
             android:name="com.example.myapplication.SettingsActivity"
-            android:label="@string/title_activity_settings"
+            android:label=""
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

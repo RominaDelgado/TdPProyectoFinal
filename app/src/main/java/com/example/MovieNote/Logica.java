@@ -14,6 +14,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.nio.channels.FileChannel;
 
+
+
+import java.io.FileNotFoundException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,16 +30,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public final class Logica {
     private  static final Logica instancia=new Logica();
-    private ArrayList<AnotacionSimple> lista;
-
-
-    // Probando persistencia de datos
-    private String carpeta="/MovieNote.proyecto/";
-    private String archivo="lista";
-    private String file_path="";
-    private String name="";
-
-
+    private  ArrayList<AnotacionSimple> lista;
+    private  File fileName=new File("lista.data");
 
     private Logica(){
         lista= new ArrayList<AnotacionSimple>();
@@ -44,66 +42,26 @@ public final class Logica {
         return instancia;
     }
 
-    public void guardar(AnotacionSimple a)
+
+
+
+    public  File getFileName()
     {
-        try {
-            lista.add(a);
-            // Creo un objeto de tipo archivo para almacenar la lista:
-           File fileName = new File("lista.data"); //FileNotFoundException
-
-
-             // Abrir un manejador de archivo para solo escritura:
-            ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(fileName));
-
-            // Escribir la lista en el stream de objetos output (IOException):
-            output.writeObject(lista);
-            // Flush fuerza la escritura de cualquier contenido que haya quedado en el buffer del archivo.
-            output.flush();
-            // Cierro el archivo.
-            output.close();
-
-        }
-        catch (IOException e)
-           { e.printStackTrace();}
-
-    }
-
-    public void cargar ()
-    {
-        try
-        {
-            File fileName = new File("lista.data"); // Nombre del archivo
-
-            // Probando persistencia de datos
-            //this.file_path=(Environment.getExternalStorageDirectory()+this.carpeta);
-            //File localFile= new File(this.file_path);
-            //if (!localFile.exists())
-            //{
-             //   localFile.mkdirs();
-            //}
-            //this.name=(this.archivo+".data");
-            //File fileName = new File(localFile,this.name);
-            //fileName.createNewFile();
-
-
-
-
-
-            // Abrir un file handle para solo lectura:
-            ObjectInputStream input = new ObjectInputStream(new FileInputStream(fileName));
-            // Leo la única lista que está en el archivo:
-            // Puede producir IOException o ClassNotFoundException:
-            lista = (ArrayList<AnotacionSimple>) input.readObject();
-            input.close(); // Cierro el archivo
-        }
-
-        catch (IOException e)
-        { e.printStackTrace(); }
-        catch (ClassNotFoundException e)
-        { e.printStackTrace();}
+        return fileName;
     }
 
     public ArrayList<AnotacionSimple> getLista()
-    {return lista;}
+    {
+        return lista;
+    }
+
+    public void añadir(AnotacionSimple e)
+    {
+        lista.add(e);
+    }
+    public void setLista(ArrayList<AnotacionSimple> l)
+    {
+        lista=l;
+    }
 
 }

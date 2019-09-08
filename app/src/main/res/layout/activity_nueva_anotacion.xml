@@ -34,19 +34,20 @@
             android:text="Fecha" />
 
         <EditText
-            android:id="@+id/editText"
-            android:layout_width="248dp"
+            android:id="@+id/campoFecha"
+            android:layout_width="188dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:translationX="150dp"
+            android:translationX="145dp"
             android:translationY="-50dp" />
 
         <Button
             android:id="@+id/button_guardar"
             android:layout_width="195dp"
             android:layout_height="wrap_content"
-            android:text="Guardar" />
+            android:text="Guardar"
+            android:translationX="80dp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
