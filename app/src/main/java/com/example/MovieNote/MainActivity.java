@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private Logica logica;
-    private ArrayList<AnotacionSimple> l;
     private ListView listaViewAnotaciones;
     private ArrayAdapter<AnotacionSimple> adapter;
 
@@ -55,22 +54,46 @@ public class MainActivity extends AppCompatActivity {
         //Importante
         Logica.setContext(this);
         logica = Logica.getInstancia();
-        List<AnotacionSimple> l = logica.getLista();
+        List<AnotacionSimple> listaAnotacionSimple = logica.getLista();
 
-        adapter = new ArrayAdapter<AnotacionSimple>(this, android.R.layout.simple_list_item_1, l);
+        adapter = new ArrayAdapter<AnotacionSimple>(this, android.R.layout.simple_list_item_1, listaAnotacionSimple);
         adapter.notifyDataSetChanged();
 
-        listaViewAnotaciones = (ListView) findViewById(R.id.listViewNotas);
-        listaViewAnotaciones.setAdapter(adapter);
+        listaViewAnotaciones = (ListView) findViewById(R.id.listaNotasPeliculas);
 
         listaViewAnotaciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                AnotacionSimple a= logica.getLista().get(i);
+                final AnotacionSimple anotacionSimple= logica.getLista().get(i);
+
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                                                {
+                                                                    logica.eliminar(anotacionSimple);
+                                                                    logica.cargar();
+                                                                     adapter.notifyDataSetChanged();
+                                                                    Toast.makeText(MainActivity.this,"Nota eliminada exitosamente",Toast.LENGTH_SHORT).show();
+
+                                                                     break;
+                                                                }
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                break;
+                        }
+                    }
+                };
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("¿Quiere eliminar la nota?").setPositiveButton("SI", dialogClickListener).setNegativeButton("NO", dialogClickListener).show();
+
+
+
 
             }
         });
 
+        listaViewAnotaciones.setAdapter(adapter);
 
         // Icono de action Bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -105,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
             case R.id.action_about:
-                // Vinculo el
+
                 Intent miIntentAbout = new Intent(MainActivity.this,Informacion.class);
                 startActivity(miIntentAbout);
                 return true;

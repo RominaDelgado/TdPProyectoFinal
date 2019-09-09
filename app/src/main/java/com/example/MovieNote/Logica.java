@@ -117,11 +117,10 @@ public final class Logica  {
         }
     }
 
-    public void eliminar(AnotacionSimple a)
+    public void eliminar(AnotacionSimple anotacionSimple)
     {
-        listaAnotacionSimple.remove(a);
+        listaAnotacionSimple.remove(anotacionSimple);
         guardar();
-
     }
 
 
