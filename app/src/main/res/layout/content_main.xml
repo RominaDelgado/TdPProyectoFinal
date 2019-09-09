@@ -12,11 +12,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:clickable="true"
+        android:orientation="vertical"
+        android:saveEnabled="true">
 
         <ListView
             android:id="@+id/listViewNotas"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:choiceMode="multipleChoice"
+            android:clickable="true"
+            android:longClickable="true"
+            android:saveEnabled="true" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

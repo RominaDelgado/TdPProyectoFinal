@@ -37,19 +37,12 @@ import androidx.appcompat.app.AlertDialog;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Logica logica = Logica.getInstancia();
+
+    private Logica logica;
     private ArrayList<AnotacionSimple> l;
     private ListView listaViewAnotaciones;
-    //private Adaptador<AnotacionSimple> adapter;
     private ArrayAdapter<AnotacionSimple> adapter;
 
-
-    ////////
-    private String arch = "lista";
-    private String carpeta = "/tdp.movieNote/";
-    private String file_path;
-    private File file;
-    private String name = "";
 
 
     @Override
@@ -59,10 +52,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        l = new ArrayList<AnotacionSimple>();
-        l = logica.getLista();
-
-        contenedorArchivo();
+        //Importante
+        Logica.setContext(this);
+        logica = Logica.getInstancia();
+        List<AnotacionSimple> l = logica.getLista();
 
         adapter = new ArrayAdapter<AnotacionSimple>(this, android.R.layout.simple_list_item_1, l);
         adapter.notifyDataSetChanged();
@@ -77,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
 
         // Icono de action Bar
@@ -98,23 +90,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -141,73 +116,13 @@ public class MainActivity extends AppCompatActivity {
                 return false;
         }
     }
-/*
-    @SuppressWarnings("unchecked")
-    public void cargar()
-    {
-        File archivo=logica.getFileName();
-        if(archivo==null)
-            archivo = getExternalFilesDir(null);
-        ObjectInputStream input;
-        try
-        {
-            //File fileName = new File("lista.data"); // Nombre del archivo
-            FileInputStream fileInput= new FileInputStream(archivo.getPath() + File.separator + "lista.data");
-            // Abrir un file handle para solo lectura:
-            input = new ObjectInputStream(fileInput);
-            // Leo la única lista que está en el archivo:
-            // Puede producir IOException o ClassNotFoundException:
-            l = (ArrayList<AnotacionSimple>) input.readObject();
-            logica.setLista(l);
-            input.close(); // Cierro el archivo
-        }
-        catch(FileNotFoundException e){
-            e.printStackTrace();
-        }catch(java.lang.NullPointerException e){
-            e.printStackTrace();
-        }catch(java.io.IOException e){
-            e.printStackTrace();
-        }catch(ClassNotFoundException e){
-            e.printStackTrace();
-        }
-    }
-    **/
-
 
     @Override
     public void onBackPressed(){
         super.onBackPressed();
-     closeOptionsMenu();
+        closeOptionsMenu();
         closeContextMenu();
     }
 
-
-
-
-    public void contenedorArchivo()
-    {
-        this.file_path=(Environment.getExternalStorageDirectory()+this.carpeta);
-        File localFile= new File(this.file_path);
-        if (!localFile.exists())
-        {
-            localFile.mkdirs();
-        }
-        this.name=(this.arch+".data");
-
-        this.file= new File(localFile,this.name);
-        try
-        {
-            this.file.createNewFile();
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
-
-        if(file.exists())
-        {
-            logica.cargar();
-        }
-    }
 
 }

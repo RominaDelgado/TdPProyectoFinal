@@ -33,7 +33,7 @@ import java.util.Date;
 
 public class NuevaAnotacion extends AppCompatActivity
 {
-    private Logica logica=Logica.getInstancia();
+    private Logica logica= Logica.getInstancia();
 
     private EditText campoTitulo;
     private EditText campoFecha;
@@ -86,84 +86,51 @@ public class NuevaAnotacion extends AppCompatActivity
 
                 if(   (campoTitulo.getText().toString().isEmpty()) ||
                         (campoFecha.getText().toString().isEmpty())
-                    )
+                )
                 {
 
                     Toast.makeText(getApplicationContext(),"No completo los campos correspondientes.",Toast.LENGTH_SHORT).show();
                 }
                 else
-                    {
-                        String titulo=""+campoTitulo.getText();
-                        AnotacionSimple anotacion =new AnotacionSimple(titulo,fecha);
-                        logica.añadir(anotacion);
+                {
+                    String titulo=""+campoTitulo.getText();
+                    AnotacionSimple anotacion =new AnotacionSimple(titulo,fecha);
+                    logica.añadir(anotacion);
 
-                        logica.guardar();
-                        Toast.makeText(getApplicationContext(),"Se guardo correctamente.",Toast.LENGTH_SHORT).show();
+                    logica.guardar();
+                    Toast.makeText(getApplicationContext(),"Se guardo correctamente.",Toast.LENGTH_SHORT).show();
 
-                        campoFecha.setText("");
+                    campoFecha.setText("");
 
-                        // Vinculo el botón con la actividad NuevaAnotacion
-                        Intent miIntentVolverPrincipal = new Intent(NuevaAnotacion.this, MainActivity.class);
-                        startActivity(miIntentVolverPrincipal);
-                        finish();
-                    }
+                    // Vinculo el botón con la actividad NuevaAnotacion
+                    Intent miIntentVolverPrincipal = new Intent(NuevaAnotacion.this, MainActivity.class);
+                    startActivity(miIntentVolverPrincipal);
+                    finish();
+                }
             }
         });}
 
 
-        @Override
-        protected Dialog onCreateDialog(int i)
-        {
-            switch (i){
-                case 0: return new DatePickerDialog(this,oyenteFecha,dia,mes,anio);
-            }
-            return null;
+    @Override
+    protected Dialog onCreateDialog(int i)
+    {
+        switch (i){
+            case 0: return new DatePickerDialog(this,oyenteFecha,dia,mes,anio);
         }
+        return null;
+    }
 
-        public void mostrarCalendario(View v)
-        {
-            showDialog(tipo_dialogo);
-        }
-
-
-/*
-        public void guardar()
-        {
-
-            ArrayList<AnotacionSimple> l =logica.getLista();
-             archivo= logica.getFileName();
-
-            if(archivo==null)
-                archivo = getExternalFilesDir(null);
-
-            ObjectOutputStream output;
-            try{
-                // Abrir un manejador de archivo para solo escritura:
-                output = new ObjectOutputStream(new FileOutputStream(archivo));
-
-                // Escribir la lista en el stream de objetos output (IOException):
-                output.writeObject(l);
-                // Flush fuerza la escritura de cualquier contenido que haya quedado en el buffer del archivo.
-                output.flush();
-                // Cierro el archivo.
-                output.close();
-
-            }
-            catch (
-                    IOException e)
-            { e.printStackTrace();}
-        }
-
-**/
-
+    public void mostrarCalendario(View v)
+    {
+        showDialog(tipo_dialogo);
+    }
 
     @Override
     public void onBackPressed(){
         super.onBackPressed();
-          Intent miIntentAgregarNota = new Intent(NuevaAnotacion.this, MainActivity.class);
+        Intent miIntentAgregarNota = new Intent(NuevaAnotacion.this, MainActivity.class);
         startActivity(miIntentAgregarNota);
 
         finish();
     }
-
 }

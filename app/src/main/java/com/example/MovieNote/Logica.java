@@ -1,81 +1,78 @@
 package com.example.MovieNote;
 
-import android.os.Environment;
-import android.widget.Toast;
+import android.content.Context;
+
+import android.util.Log;
+
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import java.io.IOException;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.nio.channels.FileChannel;
-
 
 
 import java.io.FileNotFoundException;
-import java.io.ObjectInput;
+
 import java.io.ObjectInputStream;
 
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
 
 
 public final class Logica  {
-    private  static final Logica instancia=new Logica();
-    private  ArrayList<AnotacionSimple> lista;
-    private  File fileName=new File("lista.data");
+
+
+    private static Logica instancia;
+    private static Context context;
+    private static String fileName;
+    private List<AnotacionSimple> listaAnotacionSimple;
 
     private Logica(){
-        lista= new ArrayList<AnotacionSimple>();
+        listaAnotacionSimple= new ArrayList<AnotacionSimple>();
 
     }
 
-    public static  Logica getInstancia(){
+
+    public static void setContext(Context ctx) {
+        context = ctx;
+        fileName = context.getFilesDir() + "/lista.data";
+    }
+
+    public static synchronized Logica getInstancia() {
+        if(context == null) {
+            return null;
+        }
+        if(instancia == null) {
+            instancia = new Logica();
+        }
         return instancia;
     }
 
-
-
-
-    public  File getFileName()
+    public List<AnotacionSimple> getLista()
     {
-        return fileName;
-    }
-
-    public ArrayList<AnotacionSimple> getLista()
-    {
-        return lista;
+        cargar();
+        return listaAnotacionSimple;
     }
 
     public void añadir(AnotacionSimple e)
     {
-        lista.add(e);
+        Log.i("LISTA", "antes de agregar: "+ listaAnotacionSimple.size());
+        Log.i("LISTA", "agrego: "+e.getTitulo());
+        listaAnotacionSimple.add(e);
+        Log.i("LISTA", "despues de agregar: "+listaAnotacionSimple.size());
     }
-    public void setLista(ArrayList<AnotacionSimple> l)
-    {
-        lista=l;
-    }
-
-
 
     public void guardar()
     {
-
         ObjectOutputStream output;
         try{
+            Log.i("LISTA", "size: "+listaAnotacionSimple.size());
             // Abrir un manejador de archivo para solo escritura:
             output = new ObjectOutputStream(new FileOutputStream(fileName));
 
             // Escribir la lista en el stream de objetos output (IOException):
-            output.writeObject(lista);
+            output.writeObject(listaAnotacionSimple);
             // Flush fuerza la escritura de cualquier contenido que haya quedado en el buffer del archivo.
             output.flush();
             // Cierro el archivo.
@@ -97,12 +94,16 @@ public final class Logica  {
         try
         {
             //File fileName = new File("lista.data"); // Nombre del archivo
-            FileInputStream fileInput= new FileInputStream(fileName.getPath() + File.separator + "lista.data");
+            FileInputStream fileInput= new FileInputStream(fileName);
             // Abrir un file handle para solo lectura:
             input = new ObjectInputStream(fileInput);
             // Leo la única lista que está en el archivo:
             // Puede producir IOException o ClassNotFoundException:
-            lista = (ArrayList<AnotacionSimple>) input.readObject();
+            listaAnotacionSimple = (ArrayList<AnotacionSimple>) input.readObject();
+            Log.i("LISTA", "size: "+listaAnotacionSimple.size());
+            for(AnotacionSimple anotacionSimple: listaAnotacionSimple) {
+                Log.i("LISTA", "elem al cargar: "+anotacionSimple.getTitulo());
+            }
             input.close(); // Cierro el archivo
         }
         catch(FileNotFoundException e){
@@ -118,7 +119,7 @@ public final class Logica  {
 
     public void eliminar(AnotacionSimple a)
     {
-        lista.remove(a);
+        listaAnotacionSimple.remove(a);
         guardar();
 
     }
