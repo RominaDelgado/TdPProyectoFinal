@@ -44,19 +44,14 @@ public class Adaptador<AnotacionSimple> extends ArrayAdapter<AnotacionSimple>
             inflater1 = (LayoutInflater) getContext().getSystemService(inflater);
             inflater1.inflate(resource, listItem, true);
 
+
+
         }
         else
             {
             listItem = (LinearLayout) convertView;
         }
 
-
-        //listItem = (LinearLayout) convertView;
-        //TextView tituloAnotacion =  listItem.findViewById(R.id.listViewNotas);
-        //tituloAnotacion.setTypeface(null, Typeface.BOLD);
-       // tituloAnotacion.setTextSize(TypedValue.COMPLEX_UNIT_PX, 18);
-
-        // tituloAnotacion.setText(anotacion.toString());
         return super.getView(position, convertView, parent);
     }
 }

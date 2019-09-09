@@ -31,13 +31,16 @@
             android:id="@+id/button_fecha"
             android:layout_width="138dp"
             android:layout_height="64dp"
+            android:onClick="mostrarCalendario"
             android:text="Fecha" />
 
         <EditText
             android:id="@+id/campoFecha"
             android:layout_width="188dp"
             android:layout_height="wrap_content"
+            android:editable="false"
             android:ems="10"
+            android:enabled="false"
             android:inputType="textPersonName"
             android:translationX="145dp"
             android:translationY="-50dp" />

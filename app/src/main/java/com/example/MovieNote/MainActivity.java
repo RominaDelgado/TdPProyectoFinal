@@ -1,5 +1,6 @@
 package com.example.MovieNote;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,9 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Environment;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.io.File;
@@ -24,25 +28,28 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import android.widget.ArrayAdapter;
+import android.view.ViewGroup;
+
+import android.content.DialogInterface;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Logica logica=Logica.getInstancia();
+    private Logica logica = Logica.getInstancia();
     private ArrayList<AnotacionSimple> l;
     private ListView listaViewAnotaciones;
     //private Adaptador<AnotacionSimple> adapter;
     private ArrayAdapter<AnotacionSimple> adapter;
 
 
-
-
     ////////
-    private String arch="lista";
-    private String carpeta="/tdp.movieNote/";
+    private String arch = "lista";
+    private String carpeta = "/tdp.movieNote/";
     private String file_path;
     private File file;
-    private String name="";
-
+    private String name = "";
 
 
     @Override
@@ -52,22 +59,26 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        l=new ArrayList<AnotacionSimple>();
-
-        listaViewAnotaciones=(ListView) findViewById(R.id.listViewNotas);
-
-        l=logica.getLista();
+        l = new ArrayList<AnotacionSimple>();
+        l = logica.getLista();
 
         contenedorArchivo();
-        //cargar();
 
-        adapter= new ArrayAdapter<AnotacionSimple>(this,android.R.layout.simple_list_item_1,l);
-
+        adapter = new ArrayAdapter<AnotacionSimple>(this, android.R.layout.simple_list_item_1, l);
         adapter.notifyDataSetChanged();
 
+        listaViewAnotaciones = (ListView) findViewById(R.id.listViewNotas);
         listaViewAnotaciones.setAdapter(adapter);
 
-        //listaViewAnotaciones.setOnClickListener();
+        listaViewAnotaciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                
+
+            }
+        });
+
+
 
         // Icono de action Bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -77,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view,"", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
                 // Vinculo el botón con la actividad NuevaAnotacion
@@ -87,6 +98,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -113,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
         }
     }
-
+/*
     @SuppressWarnings("unchecked")
     public void cargar()
     {
@@ -143,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+    **/
 
 
     @Override
@@ -151,6 +180,8 @@ public class MainActivity extends AppCompatActivity {
      closeOptionsMenu();
         closeContextMenu();
     }
+
+
 
 
     public void contenedorArchivo()
@@ -175,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(file.exists())
         {
-            cargar();
+            logica.cargar();
         }
     }
 

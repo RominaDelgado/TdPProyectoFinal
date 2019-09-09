@@ -9,9 +9,10 @@ public class AnotacionSimple implements  Serializable
     private String titulo;
     private Date fecha;
 
-    public AnotacionSimple(String titulo)
+    public AnotacionSimple(String titulo, Date fecha)
     {
         this.titulo=titulo;
+        this.fecha = fecha;
     }
 
     public void setTitulo(String titulo)
@@ -37,9 +38,8 @@ public class AnotacionSimple implements  Serializable
     @Override
     public String toString()
     {
-        return "-" + titulo;
+        return fecha.getDay()+"/"+fecha.getMonth()+"/"+fecha.getYear()+"     " + titulo;
     }
-
 
 }
 
