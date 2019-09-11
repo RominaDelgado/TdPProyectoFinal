@@ -73,10 +73,10 @@ public class MainActivity extends AppCompatActivity {
                             case DialogInterface.BUTTON_POSITIVE:
                                                                 {
                                                                     logica.eliminar(anotacionSimple);
-                                                                    logica.cargar();
-                                                                     adapter.notifyDataSetChanged();
+                                                                    adapter.notifyDataSetChanged();
+                                                                    finish();
+                                                                    startActivity(getIntent());
                                                                     Toast.makeText(MainActivity.this,"Nota eliminada exitosamente",Toast.LENGTH_SHORT).show();
-
                                                                      break;
                                                                 }
                             case DialogInterface.BUTTON_NEGATIVE:

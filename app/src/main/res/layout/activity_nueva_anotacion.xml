@@ -7,48 +7,63 @@
     tools:context="com.example.MovieNote.NuevaAnotacion">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_width="414dp"
+        android:layout_height="601dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="-2dp"
+        tools:layout_editor_absoluteY="2dp"
+        tools:ignore="MissingConstraints">
 
-        <TextView
-            android:id="@+id/textView_tituloPelicula"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Titulo de Pelicula "
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:layout_height="435dp"
+            android:background="#673AB7"
+            android:visibility="visible"
+            app:cardBackgroundColor="#F1D1D1"
+            tools:visibility="visible">
 
-        <EditText
-            android:id="@+id/campoTitulo"
-            android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:textAllCaps="true"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            <TextView
+                android:id="@+id/textView_tituloPelicula"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Titulo de Pelicula "
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:translationY="20dp" />
 
-        <Button
-            android:id="@+id/button_fecha"
-            android:layout_width="138dp"
-            android:layout_height="64dp"
-            android:onClick="mostrarCalendario"
-            android:text="Fecha" />
+            <EditText
+                android:id="@+id/campoTitulo"
+                android:layout_width="375dp"
+                android:layout_height="67dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:translationY="70dp" />
 
-        <EditText
-            android:id="@+id/campoFecha"
-            android:layout_width="188dp"
-            android:layout_height="wrap_content"
-            android:editable="false"
-            android:ems="10"
-            android:enabled="false"
-            android:inputType="textPersonName"
-            android:translationX="145dp"
-            android:translationY="-50dp" />
+            <Button
+                android:id="@+id/button_fecha"
+                android:layout_width="145dp"
+                android:layout_height="74dp"
+                android:onClick="mostrarCalendario"
+                android:text="Fecha"
+                android:translationY="200dp" />
+
+            <EditText
+                android:id="@+id/campoFecha"
+                android:layout_width="188dp"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:ems="10"
+                android:enabled="false"
+                android:inputType="textPersonName"
+                android:translationX="150dp"
+                android:translationY="220dp" />
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/button_guardar"
-            android:layout_width="195dp"
-            android:layout_height="wrap_content"
+            android:layout_width="243dp"
+            android:layout_height="65dp"
             android:text="Guardar"
             android:translationX="80dp" />
 
