@@ -5,6 +5,11 @@
 
 
     <item
+        android:id="@+id/action_ordenar"
+        android:orderInCategory="100"
+        android:title="Ordenar por"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_about"
         android:orderInCategory="100"
         android:title="Info de app"

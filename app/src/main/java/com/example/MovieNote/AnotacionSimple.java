@@ -2,6 +2,7 @@ package com.example.MovieNote;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class AnotacionSimple implements  Serializable
 {
@@ -38,7 +39,10 @@ public class AnotacionSimple implements  Serializable
     @Override
     public String toString()
     {
-        return fecha.getDay()+"/"+fecha.getMonth()+"/"+fecha.getYear()+"     " + titulo;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM");
+        String strDate= formatter.format(fecha);
+       // return  ""+fecha.getDate()+"/"+(fecha.getMonth()+1)+"/"+fecha.getYear()+ "     " +titulo;
+       return strDate+"-"+fecha.getYear()+ "    "+titulo;
     }
 
 }

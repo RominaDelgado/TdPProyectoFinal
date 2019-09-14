@@ -1,6 +1,6 @@
 package com.example.MovieNote;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,24 +11,15 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.os.Environment;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
+
 import android.widget.ListView;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.util.ArrayList;
 import java.util.List;
 import android.widget.ArrayAdapter;
-import android.view.ViewGroup;
 
 import android.content.DialogInterface;
 import android.widget.Toast;
@@ -39,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private Logica logica;
-    private ListView listaViewAnotaciones;
+    private ListView listaVistaAnotaciones;
     private ArrayAdapter<AnotacionSimple> adapter;
 
 
@@ -59,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<AnotacionSimple>(this, android.R.layout.simple_list_item_1, listaAnotacionSimple);
         adapter.notifyDataSetChanged();
 
-        listaViewAnotaciones = (ListView) findViewById(R.id.listaNotasPeliculas);
+        listaVistaAnotaciones = (ListView) findViewById(R.id.listaNotasPeliculas);
 
-        listaViewAnotaciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listaVistaAnotaciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final AnotacionSimple anotacionSimple= logica.getLista().get(i);
@@ -74,8 +65,9 @@ public class MainActivity extends AppCompatActivity {
                                                                 {
                                                                     logica.eliminar(anotacionSimple);
                                                                     adapter.notifyDataSetChanged();
-                                                                    finish();
-                                                                    startActivity(getIntent());
+                                                                    recreate();
+                                                               //     finish();
+                                                                 //   startActivity(getIntent());
                                                                     Toast.makeText(MainActivity.this,"Nota eliminada exitosamente",Toast.LENGTH_SHORT).show();
                                                                      break;
                                                                 }
@@ -93,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        listaViewAnotaciones.setAdapter(adapter);
+        listaVistaAnotaciones.setAdapter(adapter);
 
         // Icono de action Bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -123,12 +115,29 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()){
+            case R.id.action_ordenar:
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                            {
+                               logica.ordenar_fecha();
+                               adapter.notifyDataSetChanged();
+                                break;
+                            }
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                logica.ordenar_titulo();
+                                adapter.notifyDataSetChanged();
+                                break;
+                        }
+                    }
+                };
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("Ordenar por").setPositiveButton("Fecha", dialogClickListener).setNegativeButton("Titulo", dialogClickListener).show();
+                return true;
             case R.id.action_about:
-
                 Intent miIntentAbout = new Intent(MainActivity.this,Informacion.class);
                 startActivity(miIntentAbout);
                 return true;
@@ -138,13 +147,6 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return false;
         }
-    }
-
-    @Override
-    public void onBackPressed(){
-        super.onBackPressed();
-        closeOptionsMenu();
-        closeContextMenu();
     }
 
 

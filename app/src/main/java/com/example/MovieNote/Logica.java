@@ -3,10 +3,10 @@ package com.example.MovieNote;
 import android.content.Context;
 
 import android.util.Log;
-
-
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import java.io.IOException;
@@ -93,7 +93,6 @@ public final class Logica  {
         ObjectInputStream input;
         try
         {
-            //File fileName = new File("lista.data"); // Nombre del archivo
             FileInputStream fileInput= new FileInputStream(fileName);
             // Abrir un file handle para solo lectura:
             input = new ObjectInputStream(fileInput);
@@ -121,6 +120,27 @@ public final class Logica  {
     {
         listaAnotacionSimple.remove(anotacionSimple);
         guardar();
+    }
+
+    public void ordenar_fecha()
+    {
+        Collections.sort(listaAnotacionSimple, new Comparator<AnotacionSimple>() {
+            @Override
+            public int compare(AnotacionSimple a1, AnotacionSimple a2) {
+                return a1.getFecha().compareTo(a2.getFecha());
+            }
+        });
+
+    }
+
+    public void ordenar_titulo()
+    {
+        Collections.sort(listaAnotacionSimple, new Comparator<AnotacionSimple>() {
+            @Override
+            public int compare(AnotacionSimple a1, AnotacionSimple a2) {
+                return a1.getTitulo().compareToIgnoreCase(a2.getTitulo());
+            }
+        });
     }
 
 

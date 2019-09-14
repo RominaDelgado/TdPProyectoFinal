@@ -34,6 +34,7 @@
     <ListView
         android:id="@+id/listaNotasPeliculas"
         android:layout_width="match_parent"
-        android:layout_height="655dp" />
+        android:layout_height="589dp"
+        android:translationY="60dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
