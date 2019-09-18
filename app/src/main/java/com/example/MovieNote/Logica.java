@@ -130,6 +130,7 @@ public final class Logica  {
                 return a1.getFecha().compareTo(a2.getFecha());
             }
         });
+        guardar();
 
     }
 
@@ -141,7 +142,9 @@ public final class Logica  {
                 return a1.getTitulo().compareToIgnoreCase(a2.getTitulo());
             }
         });
+        guardar();
     }
+
 
 
 }
